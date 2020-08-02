@@ -6,11 +6,13 @@ Sometimes I want to open a remote socket repl from my repl, but Clojure does not
 provide a way to do this out of the box. 
 
 ## Usage
+
 To give it a try, you need a socket repl available on the network. You can start
 it with this shell command:
 ```sh
 $ clj "-J-Dclojure.server.repl={:port 5555 :accept clojure.core.server/repl}" 
 ```
+
 Now you can connect to that process from another process
 ```sh
 $ clj
@@ -26,7 +28,8 @@ user=> :repl/quit
 nil
 user=> 
 ```
-Alternatively, you can use `-main` to immediately drop into remote repl:
+
+You can use `-main` to immediately drop into a remote repl:
 ```sh
 $ clj -m vlaaad.remote-repl :port 5555
 user=> (System/getProperty "clojure.server.repl")
