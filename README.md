@@ -15,8 +15,8 @@ $ clj "-J-Dclojure.server.repl={:port 5555 :accept clojure.core.server/repl}"
 ```
 
 Now you can connect to that process from another process
-```clj
-$ clj
+```
+$ clj -Sdeps '{:deps {vlaaad/remote-repl {:mvn/version "1.1"}}}'
 Clojure 1.10.1
 user=> (require '[vlaaad.remote-repl :as rr])
 nil
@@ -31,8 +31,8 @@ user=>
 ```
 
 You can use `-main` to immediately drop into a remote repl:
-```clj
-$ clj -m vlaaad.remote-repl :port 5555
+```
+$ clj -Sdeps '{:deps {vlaaad/remote-repl {:mvn/version "1.1"}}}' -m vlaaad.remote-repl :port 5555
 user=> (System/getProperty "clojure.server.repl")
 "{:port 5555 :accept clojure.core.server/repl}"
 user=> :repl/quit
