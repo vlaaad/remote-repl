@@ -1,6 +1,7 @@
-{:deps {}
- :aliases {:build {:extra-deps {seancorfield/depstar {:mvn/version "1.0.96"}}
-                   :main-opts ["-m" "hf.depstar.jar" "remote-repl.jar"]}
-           :deploy {:extra-deps {clj-commons/pomegranate {:mvn/version "1.2.0"}}
-                    :extra-paths ["build"]
-                    :main-opts ["-m" "deploy"]}}}
+{:deps {org.clojure/clojure {:mvn/version "1.10.3"}}
+ :aliases {:build {:extra-deps {com.github.seancorfield/depstar {:mvn/version "2.1.245"}
+                                org.clojure/data.xml {:mvn/version "0.2.0-alpha6"}
+                                org.clojure/tools.deps.alpha {:mvn/version "0.11.935"}
+                                clj-commons/pomegranate {:mvn/version "1.2.0"}}
+                   :extra-paths ["build"]
+                   :ns-default build}}}
