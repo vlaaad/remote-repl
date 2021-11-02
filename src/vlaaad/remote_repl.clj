@@ -1,5 +1,5 @@
 (ns vlaaad.remote-repl
-  (:import [java.net Socket SocketException InetAddress]
+  (:import [java.net Socket InetAddress]
            [java.io InputStreamReader BufferedReader OutputStreamWriter Reader]))
 
 (defn repl
@@ -9,7 +9,7 @@
   - :port (required) - target port
   - :host (optional) - target host
   - :reconnect (optional, default false) - whether to keep automatically
-    reconnecting to the repl on socket exceptions"
+    reconnecting to the repl forever"
   ([] (repl {}))
   ([k v & kvs] (repl (apply hash-map k v kvs)))
   ([{:keys [host port reconnect]
@@ -53,8 +53,8 @@
                (p e)))
          ret @p]
      (cond
-       (and reconnect (instance? SocketException ret))
-       (do (Thread/sleep 250)
+       reconnect
+       (do (Thread/sleep 1000)
            (println (str "Reconnecting to "
                          (or host (.getHostName (InetAddress/getByName nil)))
                          ":" port))
