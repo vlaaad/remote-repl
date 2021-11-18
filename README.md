@@ -45,7 +45,9 @@ $ clj -Sdeps '{:deps {vlaaad/remote-repl {:mvn/version "1.2.12"}}}' -X vlaaad.re
 
 You can install remote repl as a tool:
 ```
-clj -Ttools install vlaaad/remote-repl '{:git/url "https://github.com/vlaaad/remote-repl.git" :git/tag "v1.2.12"}' :as remote-repl
+clj -Ttools install \
+  vlaaad/remote-repl '{:git/url "https://github.com/vlaaad/remote-repl.git" :git/tag "v1.2.12"}' \
+  :as remote-repl
 clj -Tremote-repl repl :port 5555
 ```
 
