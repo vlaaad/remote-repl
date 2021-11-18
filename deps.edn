@@ -1,4 +1,5 @@
 {:deps {org.clojure/clojure {:mvn/version "1.10.3"}}
+ :tools/usage {:ns-default vlaaad.remote-repl}
  :aliases {:build {:extra-deps {com.github.seancorfield/depstar {:mvn/version "2.1.245"}
                                 org.clojure/data.xml {:mvn/version "0.2.0-alpha6"}
                                 org.clojure/tools.deps.alpha {:mvn/version "0.11.935"}

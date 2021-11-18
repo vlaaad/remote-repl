@@ -40,11 +40,10 @@ user=> :repl/quit
 
 ## Reconnecting
 
-It might be useful to automatically reconnect to the remote REPL if it died. For 
+It might be useful to automatically reconnect to the remote REPL. For 
 example, you might want to restart your REPL server during development to update
 dependencies. You can use `:reconnect true` option to keep the REPL client 
-reconnecting, that way it will automatically restore the connection when remote
-REPL is back up.
+reconnecting, that way it will keep connecting to the remote REPL while the JVM is alive.
 
 Example:
 
