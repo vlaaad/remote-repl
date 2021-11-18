@@ -16,7 +16,7 @@ $ clj "-J-Dclojure.server.repl={:port 5555 :accept clojure.core.server/repl}"
 
 Now you can connect to that process from another process
 ```
-$ clj -Sdeps '{:deps {vlaaad/remote-repl {:mvn/version "1.2.9"}}}'
+$ clj -Sdeps '{:deps {vlaaad/remote-repl {:mvn/version "1.2.12"}}}'
 Clojure 1.10.1
 user=> (require '[vlaaad.remote-repl :as rr])
 nil
@@ -32,10 +32,21 @@ user=>
 
 You can use `-main` to immediately drop into a remote repl:
 ```
-$ clj -Sdeps '{:deps {vlaaad/remote-repl {:mvn/version "1.2.9"}}}' -m vlaaad.remote-repl :port 5555
+$ clj -Sdeps '{:deps {vlaaad/remote-repl {:mvn/version "1.2.12"}}}' -m vlaaad.remote-repl :port 5555
 user=> (System/getProperty "clojure.server.repl")
 "{:port 5555 :accept clojure.core.server/repl}"
 user=> :repl/quit
+```
+
+You can use `-X` style invocation:
+```
+$ clj -Sdeps '{:deps {vlaaad/remote-repl {:mvn/version "1.2.12"}}}' -X vlaaad.remote-repl/repl :port 5555
+```
+
+You can install remote repl as a tool:
+```
+clj -Ttools install vlaaad/remote-repl '{:git/url "https://github.com/vlaaad/remote-repl.git" :git/tag "v1.2.12"}' :as remote-repl
+clj -Tremote-repl repl :port 5555
 ```
 
 ## Reconnecting
@@ -48,7 +59,7 @@ reconnecting, that way it will keep connecting to the remote REPL while the JVM 
 Example:
 
 ```shell
-$ clj -Sdeps '{:deps {vlaaad/remote-repl {:mvn/version "1.2.9"}}}' \
+$ clj -Sdeps '{:deps {vlaaad/remote-repl {:mvn/version "1.2.12"}}}' \
   -X vlaaad.remote-repl/repl \
   :port 5757 :reconnect true
 Reconnecting to localhost:5757
